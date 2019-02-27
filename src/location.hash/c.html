@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        console.log(location.hash, 'c page')
+        let iframe = document.createElement('iframe')
+        iframe.src = 'http://127.0.0.1:1229/b.html' + location.hash
+        document.body.appendChild(iframe)
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    a page
+    <iframe src="http://127.0.0.1:1230/b.html" frameborder="0" id="frame" onload="load()"></iframe>
+
+    <script>
+        function load () {
+            let frame = document.querySelector('#frame')
+            frame.contentWindow.postMessage('postMsg', 'http://127.0.0.1:1230')
+            window.onmessage = function (ev) {
+                console.log(ev.data, 'evdata a page')
+            }
+        }
+    </script>
+
+</body>
+</html>

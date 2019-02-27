@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 路径后面的hash值可以用来通信 -->
+
+    <!-- a.html和b.html是同域的 http://127.0.0.1:1229
+    c是独立的 http://127.0.0.1:1230
+
+    需求：a.html获取c.html的页面值
+    a.html给c.html传一个hash值，c.html收到hash值后，c.html把hash值传递给b.html，b.html将结果放到a.html的hash值上 -->
+
+    <!-- a.html -> c.html -> b.html -> a.html -->
+
+    <iframe src="http://127.0.0.1:1230/c.html#c=100" frameborder="0"></iframe>
+
+    <script>
+        window.onhashchange = function () {
+            console.log(location.hash, 'a page')
+        }
+    </script>
+
+</body>
+</html>

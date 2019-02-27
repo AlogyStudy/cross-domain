@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./jsonp.js"></script>
+    <script>
+        jsonp({
+            url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+            // url: 'http://127.0.0.1:1229/say',
+            params: {wd: 'a'},
+            cb: 'show'
+        }).then(res => {
+            // console.log(res, 'res')
+            console.log(res.s, 'res')
+        })
+    </script>
+
+    <!-- <script>
+        function show (data) {
+            console.log(data, 'data1')
+        }
+    </script>
+    <script>
+        jsonp({
+            url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+            params: {wd: 'a'},
+            cb: 'show'
+        }).then(data => {
+            console.log(data, 'dataaa')
+        })
+
+        function jsonp ({url, params, cb}) {
+            return new Promise((resolve, reject) => {
+                let script = document.createElement('script')
+                console.log(window[cb], 'window[cb]')
+                window[cb] = function (data) {
+                    console.log(data, 'data')
+                    resolve(data)
+                    document.body.removeChild(script)
+                }
+                params = {...params, cb}
+                let arrs = []
+                for (let key in params) {
+                    arrs.push(`${key}=${params[key]}`)
+                }
+                let urlParams = `${url}?${arrs.join('&')}`
+                console.log(urlParams, 'urlParams')
+                script.src = urlParams
+                document.body.appendChild(script)
+            })
+        }
+    </script> -->
+    <!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=a&cb=show"></script> -->
+</body>
+</html>

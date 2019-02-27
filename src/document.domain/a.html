@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    a page
+    
+    <!-- 域名：一级域名，二级域名 -->
+    <!-- www.baidu.com， image.baidu.com 默认情况下没有办法通信 -->
+    <!-- a.html 是通过http://a.local1.com:1230/a.html 访问 -->
+    
+    <iframe src="http://b.local1.com:1230/b.html" frameborder="0" onload="load()" id="frame"></iframe>
+    <script>
+        document.domain = 'local1.com'
+        function load () {
+            let frame = document.querySelector('#frame')
+            console.log(frame.contentWindow.a, 'frame.contentWindow.a')
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let xhr = new XMLHttpRequest()
+        document.cookie = 'age=21'
+        xhr.withCredentials = true
+        xhr.open('GET', 'http://127.0.0.1:1230/getData', true)
+        xhr.setRequestHeader('name', 'cors')
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+                    console.log(xhr.response)
+                    let t = xhr.getResponseHeader('name')
+                    console.log(t, 'tt')
+                }
+            }
+        }
+
+        xhr.send()
+
+    </script>
+
+</body>
+</html>

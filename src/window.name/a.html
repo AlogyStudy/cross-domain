@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- a.html和b.html是同域的 http://127.0.0.1:1229
+    c是独立的 http://127.0.0.1:1230
+
+    需求：a.html获取c.html的页面值
+    a.html先引用c.html， c.html把值放到window.name上，把a.html引用的地址改到b.html -->
+
+    a page
+
+    <iframe src="http://127.0.0.1:1230/c.html" frameborder="0" id="frame" onload="load()"></iframe>
+
+    <script>
+        let first = true
+        function load () {
+            if (first) {
+                let frame = document.querySelector('#frame')
+                frame.src = 'http://127.0.0.1:1229/b.html'
+                first = false
+            } else {
+                console.log(frame.contentWindow.name, 'frame.contentWindow.name')
+            }
+        }
+    </script>
+</body>
+</html>
